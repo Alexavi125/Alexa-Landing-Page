@@ -9,39 +9,51 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-/* ===== Small business – soft, neutral, touching ===== */
+/* ===== פלטת צבעים – AI לעסקים קטנים: טכנולוגיה עם נשמה ===== */
 :root {
-  --color-bg: #FAF9F6;
-  --color-surface: #F5F5F5;
-  --color-surface-2: #ffffff;
-  --color-text: #333333;
-  --color-text-muted: #555555;
-  --color-accent: #00C48C;
-  --color-accent-hover: #00a876;
-  --color-accent-soft: rgba(0, 196, 140, 0.12);
-  --color-secondary: #FF8C42;
-  --color-secondary-soft: rgba(255, 140, 66, 0.12);
-  --color-peach: #FFC1B6;
-  --color-sky: #4A90E2;
-  --color-border: rgba(0, 0, 0, 0.06);
+  --color-bg: #F8FAFC;
+  --color-bg-alt: #FFFFFF;
+  --color-surface: #F1F5F9;
+  --color-surface-alt: #E2E8F0;
+  --color-surface-2: #FFFFFF;
+  --color-text: #1E293B;
+  --color-text-muted: #475569;
+  --color-primary: #6366F1;
+  --color-primary-hover: #4F46E5;
+  --color-primary-soft: rgba(99, 102, 241, 0.12);
+  --color-primary-blob: rgba(99, 102, 241, 0.25);
+  --color-accent: #14B8A6;
+  --color-accent-hover: #0D9488;
+  --color-accent-soft: rgba(20, 184, 166, 0.15);
+  --color-secondary: #6366F1;
+  --color-secondary-hover: #4F46E5;
+  --color-secondary-soft: rgba(99, 102, 241, 0.12);
+  --color-sky: #6366F1;
+  --color-sky-soft: rgba(99, 102, 241, 0.1);
+  --color-peach: #A78BFA;
+  --color-peach-soft: rgba(167, 139, 250, 0.15);
+  --color-border: rgba(99, 102, 241, 0.08);
   --font-he: 'Heebo', sans-serif;
   --font-en: 'Space Grotesk', sans-serif;
   --radius: 12px;
   --radius-lg: 20px;
   --transition: 0.25s ease;
-  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.06);
-  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 4px 24px rgba(99, 102, 241, 0.06);
+  --shadow-card: 0 8px 32px rgba(99, 102, 241, 0.08);
 }
 *,*::before,*::after{box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{margin:0;font-family:var(--font-he);background:var(--color-bg);color:var(--color-text-muted);line-height:1.65;overflow-x:hidden;}
+body{margin:0;font-family:var(--font-he);background:var(--color-bg);color:var(--color-text-muted);line-height:1.65;overflow-x:hidden;position:relative;}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(99,102,241,0.08) 1px, transparent 0);background-size:24px 24px;pointer-events:none;z-index:0;}
+body>*{position:relative;z-index:1;}
 body.lang-en{font-family:var(--font-en);direction:ltr;}
 body.lang-en .container,body.lang-en .nav,body.lang-en .hero-inner,body.lang-en .about-grid,body.lang-en .services-grid,body.lang-en .blog-grid{text-align:left;}
 body.lang-en .nav-menu{flex-direction:row;}
 .container{max-width:1100px;margin:0 auto;padding:0 1.5rem;text-align:right;}
-a{color:var(--color-accent);text-decoration:none;transition:color var(--transition);}
-a:hover{color:var(--color-accent-hover);}
-.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 0;background:rgba(250,249,246,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--color-border);}
+a{color:var(--color-secondary);text-decoration:none;transition:color var(--transition);}
+a:hover{color:var(--color-secondary-hover);}
+.header{position:sticky;top:0;left:0;right:0;z-index:100;padding:1rem 0;background:transparent;border-bottom:1px solid transparent;}
+.header .nav{position:relative;z-index:1;}
 .nav{display:flex;align-items:center;justify-content:space-between;}
 .logo{font-weight:700;font-size:1.25rem;color:var(--color-text)!important;}
 .nav-menu{display:flex;list-style:none;margin:0;padding:0;gap:1.5rem;align-items:center;}
@@ -50,49 +62,94 @@ a:hover{color:var(--color-accent-hover);}
 .nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
 .nav-toggle span{width:24px;height:2px;background:var(--color-text);border-radius:2px;}
 .lang-switch{background:var(--color-surface-2);color:var(--color-text);border:1px solid var(--color-border);padding:0.4rem 0.75rem;border-radius:var(--radius);cursor:pointer;font-size:0.9rem;font-weight:500;transition:background var(--transition),border-color var(--transition);}
-.lang-switch:hover{background:var(--color-accent-soft);border-color:var(--color-accent);color:var(--color-accent);}
+.lang-switch:hover{background:var(--color-secondary-soft);border-color:var(--color-secondary);color:var(--color-secondary);}
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:6rem 0 4rem;}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% -10%,var(--color-accent-soft),transparent),radial-gradient(ellipse 60% 40% at 85% 70%,rgba(255,193,182,0.2),transparent),radial-gradient(ellipse 50% 30% at 15% 60%,rgba(74,144,226,0.08),transparent);pointer-events:none;}
+.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+.hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg, rgba(99,102,241,0.12) 0%, transparent 50%), linear-gradient(315deg, rgba(139,92,246,0.1) 0%, transparent 45%), linear-gradient(180deg, transparent 60%, var(--color-accent-soft) 100%);}
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(99,102,241,0.12) 1px, transparent 0);background-size:28px 28px;}
+.hero-blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:0.5;animation:blob-float 12s ease-in-out infinite;}
+.hero-blob-1{width:320px;height:320px;background:var(--color-primary-blob);top:10%;left:5%;animation-delay:0s;}
+.hero-blob-2{width:280px;height:280px;background:rgba(20,184,166,0.2);top:50%;right:10%;animation-delay:-4s;}
+.hero-blob-3{width:240px;height:240px;background:rgba(139,92,246,0.2);bottom:15%;left:20%;animation-delay:-8s;}
+@keyframes blob-float{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(20px,-15px) scale(1.05);}66%{transform:translate(-10px,20px) scale(0.95);}}
 .hero-inner{position:relative;width:100%;}
 .hero-tag{display:inline-block;color:var(--color-accent);font-size:0.9rem;font-weight:500;margin-bottom:1rem;letter-spacing:0.04em;}
-.hero-title{font-size:clamp(2rem,5vw,3.25rem);font-weight:700;line-height:1.25;margin:0 0 1rem;max-width:20ch;color:var(--color-text);}
-.hero-desc{font-size:1.1rem;color:var(--color-text-muted);max-width:42ch;margin:0 0 2rem;}
+.hero-wrap{display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:stretch;}
+.hero-title{font-size:clamp(2rem,5vw,3.25rem);font-weight:700;line-height:1.25;margin:0 0 1rem;max-width:22ch;color:var(--color-text);}
+.hero-desc{font-size:1.1rem;color:var(--color-text-muted);max-width:48ch;margin:0 0 2rem;}
 .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;}
+.hero-ai{display:flex;align-items:stretch;justify-content:center;flex-shrink:0;min-height:280px;}
+.hero-ai-badge{display:flex;align-items:center;justify-content:center;height:100%;min-height:inherit;}
+.hero-ai-img{height:100%;max-height:520px;min-height:280px;width:auto;object-fit:contain;object-position:center center;display:block;}
+.ai-section{background:linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%);position:relative;}
+.ai-section::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.04) 1px, transparent 1px);background-size:32px 32px;pointer-events:none;}
+.ai-section .container{position:relative;z-index:1;}
+.ai-grid{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;}
+.ai-visual{display:flex;align-items:center;gap:1rem;}
+.ai-icon-wrap{width:80px;height:80px;background:var(--color-sky-soft);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;}
+.ai-icon-wrap svg{width:44px;height:44px;}
+.ai-features{list-style:none;margin:0;padding:0;}
+.ai-features li{display:flex;align-items:flex-start;gap:0.75rem;margin-bottom:1rem;}
+.ai-features .check{flex-shrink:0;width:24px;height:24px;background:var(--color-accent);border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.ai-features .check svg{width:14px;height:14px;}
+.ai-features strong{color:var(--color-text);display:block;margin-bottom:0.2rem;}
+.ai-features span{color:var(--color-text-muted);font-size:0.95rem;}
+@media (max-width:768px){.hero-wrap{grid-template-columns:1fr;align-items:center;}.hero-ai{min-height:240px;}.hero-ai-img{max-height:380px;min-height:220px;}.ai-grid{grid-template-columns:1fr;}}
 .btn{display:inline-block;padding:0.85rem 1.5rem;border-radius:var(--radius);font-weight:600;font-size:1rem;transition:transform var(--transition),box-shadow var(--transition);}
 .btn:hover{transform:translateY(-2px);}
 .btn-primary{background:var(--color-accent);color:#fff!important;border:none;box-shadow:var(--shadow-soft);}
-.btn-primary:hover{background:var(--color-accent-hover);box-shadow:0 6px 24px rgba(0,196,140,0.3);}
-.btn-outline{background:transparent;color:var(--color-text)!important;border:2px solid var(--color-accent);}
-.btn-outline:hover{background:var(--color-accent-soft);border-color:var(--color-accent);color:var(--color-accent)!important;}
+.btn-primary:hover{background:var(--color-accent-hover);box-shadow:0 6px 24px rgba(20,184,166,0.35);}
+.btn-outline{background:transparent;color:var(--color-text)!important;border:2px solid var(--color-primary);}
+.btn-outline:hover{background:var(--color-primary-soft);border-color:var(--color-primary);color:var(--color-primary)!important;}
+.hero-cta .btn-outline{color:var(--color-primary)!important;border-color:var(--color-primary);}
+.hero-cta .btn-outline:hover{color:var(--color-primary-hover)!important;border-color:var(--color-primary-hover);}
 .section{padding:5rem 0;}
 .section-title{font-size:clamp(1.75rem,4vw,2.25rem);font-weight:700;margin:0 0 0.5rem;color:var(--color-text);}
+.about .section-title{margin-bottom:0.5rem;}
+.about .about-text{margin-top:0;padding-top:0;}
 .section-subtitle{color:var(--color-text-muted);font-size:1.1rem;margin:0 0 2.5rem;}
-.about{background:var(--color-surface);}
+.about{background:var(--color-surface-alt);position:relative;}
+.about::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg, rgba(99,102,241,0.06) 0%, transparent 40%), linear-gradient(225deg, rgba(20,184,166,0.05) 0%, transparent 40%);pointer-events:none;}
+.about .container{position:relative;z-index:1;}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
 .about-text p{margin:0 0 1rem;color:var(--color-text-muted);max-width:50ch;}
 .about-lead{font-size:1.15rem;color:var(--color-text)!important;font-weight:500;}
-.about-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:2rem;text-align:center;box-shadow:var(--shadow-card);}
-.about-stat{display:block;font-size:1.5rem;font-weight:700;color:var(--color-accent);margin-bottom:0.5rem;}
-.about-stat_desc{margin:0!important;color:var(--color-text-muted);font-size:0.95rem;}
+.about-img{width:100%;max-width:420px;height:auto;display:block;border-radius:var(--radius-lg);box-shadow:var(--shadow-card);}
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;}
 .service-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.75rem;transition:border-color var(--transition),transform var(--transition),box-shadow var(--transition);box-shadow:var(--shadow-soft);}
-.service-card:hover{border-color:rgba(0,196,140,0.25);transform:translateY(-4px);box-shadow:var(--shadow-card);}
+.service-card--transparent{background:transparent;border:1px solid rgba(99,102,241,0.2);box-shadow:none;}
+.service-card--transparent:hover{border-color:rgba(99,102,241,0.4);}
+.service-card:hover{border-color:rgba(99,102,241,0.25);transform:translateY(-4px);box-shadow:var(--shadow-card);}
 .service-icon{font-size:2rem;margin-bottom:1rem;}
 .service-card h3{font-size:1.2rem;font-weight:600;margin:0 0 0.5rem;color:var(--color-text);}
 .service-card p{margin:0;color:var(--color-text-muted);font-size:0.95rem;}
-.blog{background:var(--color-surface);}
+.service-card-lead{color:#334155;font-weight:500;margin-bottom:0.5rem;display:block;}
+.blog{background:var(--color-surface);position:relative;}
+.blog::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px, rgba(99,102,241,0.06) 1px, transparent 0);background-size:20px 20px;pointer-events:none;}
+.blog .container{position:relative;z-index:1;}
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;}
 .blog-card{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:1.5rem;transition:border-color var(--transition);box-shadow:var(--shadow-soft);}
-.blog-card:hover{border-color:rgba(74,144,226,0.2);}
-.blog-date{font-size:0.85rem;color:var(--color-accent);margin-bottom:0.5rem;}
+.blog-card:hover{border-color:rgba(99,102,241,0.2);}
+.blog-date{font-size:0.85rem;color:var(--color-primary);margin-bottom:0.5rem;}
 .blog-card h3{font-size:1.1rem;font-weight:600;margin:0 0 0.5rem;}
 .blog-card h3 a{color:var(--color-text);}
-.blog-card h3 a:hover{color:var(--color-accent);}
+.blog-card h3 a:hover{color:var(--color-secondary);}
 .blog-card p{margin:0;color:var(--color-text-muted);font-size:0.9rem;}
-.footer{padding:2rem 0;border-top:1px solid var(--color-border);text-align:center;}
-.footer-text{color:var(--color-text-muted);font-size:0.9rem;margin:0 0 0.5rem;}
-.footer-link{color:var(--color-accent);font-size:0.95rem;}
+.whatsapp-cta{padding:3rem 0;text-align:center;}
+.cta-buttons{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;}
+[dir="rtl"] .cta-buttons{flex-direction:row-reverse;}
+.email-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.75rem;background:var(--color-primary);color:#fff!important;font-size:1.25rem;font-weight:700;padding:1.25rem 2.5rem;border-radius:var(--radius-lg);text-decoration:none;transition:transform var(--transition),box-shadow var(--transition);box-shadow:0 4px 20px rgba(99,102,241,0.35);}
+.email-btn:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(99,102,241,0.45);}
+.whatsapp-btn{display:inline-flex;align-items:center;justify-content:center;gap:0.75rem;background:#25D366;color:#fff!important;font-size:1.25rem;font-weight:700;padding:1.25rem 2.5rem;border-radius:var(--radius-lg);text-decoration:none;transition:transform var(--transition),box-shadow var(--transition);box-shadow:0 4px 20px rgba(37,211,102,0.4);}
+.whatsapp-btn:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(37,211,102,0.5);}
+.whatsapp-btn svg,.email-btn svg{width:32px;height:32px;flex-shrink:0;}
+.footer{padding:2rem 0;border-top:1px solid var(--color-border);}
+.footer .container{display:flex;justify-content:flex-start;}
+[dir="ltr"] .footer .container{justify-content:flex-end;}
+.footer-text{color:var(--color-text-muted);font-size:0.9rem;margin:0;}
+.footer-link{color:var(--color-secondary);font-size:0.95rem;}
 body.lang-en .hero-title,body.lang-en .hero-desc,body.lang-en .about-text p{max-width:none;}
+.about-text p:last-of-type{margin-bottom:0;}
 @media (max-width:768px){
 .nav-toggle{display:flex;}
 .nav-menu{position:fixed;top:0;right:0;width:280px;height:100vh;background:var(--color-surface-2);flex-direction:column;padding:5rem 1.5rem 1.5rem;gap:1rem;transform:translateX(100%);transition:transform var(--transition);border-left:1px solid var(--color-border);box-shadow:var(--shadow-card);}
@@ -106,15 +163,14 @@ body.lang-en .nav-menu{right:auto;left:0;border-left:none;border-right:1px solid
 <body>
   <header class="header">
     <nav class="nav container">
-      <a href="#home" class="logo" data-i18n="logo">המותג שלי</a>
+      <a href="#home" class="logo" data-i18n="logo" aria-label="דף בית"></a>
       <button class="nav-toggle" aria-label="תפריט" id="navToggle">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-menu" id="navMenu">
         <li><a href="#home" data-i18n="nav_home">דף בית</a></li>
-        <li><a href="#about" data-i18n="nav_about">אודות</a></li>
-        <li><a href="#services" data-i18n="nav_services">שירותים</a></li>
-        <li><a href="#blog" data-i18n="nav_blog">בלוג</a></li>
+        <li><a href="#about" data-i18n="nav_about">קצת עלי</a></li>
+        <li><a href="#services" data-i18n="nav_services">הפתרונות</a></li>
         <li>
           <button class="lang-switch" id="langSwitch" aria-label="Switch to English">EN</button>
         </li>
@@ -123,107 +179,103 @@ body.lang-en .nav-menu{right:auto;left:0;border-left:none;border-right:1px solid
   </header>
 
   <main>
-    <!-- 1. Landing / דף בית -->
     <section id="home" class="hero">
-      <div class="hero-bg"></div>
-      <div class="container hero-inner">
-        <p class="hero-tag" data-i18n="hero_tag">שיווק דיגיטלי עם נשמה</p>
-        <h1 class="hero-title" data-i18n="hero_title">מגדילים נוכחות. בונים קשרים. מובילים תוצאות.</h1>
-        <p class="hero-desc" data-i18n="hero_desc">אני עוזרת לעסקים ולמותגים להצליח באונליין — מאסטרטגיה ועד תוכן, SEO וקמפיינים.</p>
-        <div class="hero-cta">
-          <a href="#services" class="btn btn-primary" data-i18n="hero_cta">ראה שירותים</a>
-          <a href="#about" class="btn btn-outline" data-i18n="hero_cta2">הסיפור שלי</a>
-        </div>
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-blob hero-blob-1"></span>
+        <span class="hero-blob hero-blob-2"></span>
+        <span class="hero-blob hero-blob-3"></span>
       </div>
-    </section>
-
-    <!-- 2. About / אודות -->
-    <section id="about" class="section about">
-      <div class="container">
-        <h2 class="section-title" data-i18n="about_title">אודות</h2>
-        <p class="section-subtitle" data-i18n="about_subtitle">הסיפור שלי בעולם הדיגיטל</p>
-        <div class="about-grid">
-          <div class="about-text">
-            <p class="about-lead" data-i18n="about_lead">התחלתי את הדרך בעולם הטכנולוגיה והתוכן, ומשם התפתחתי לשיווק דיגיטלי ואסטרטגיה.</p>
-            <p data-i18n="about_p1">אני מאמינה בשילוב בין כלים חכמים (כולל AI) לבין גישה אנושית — כך נוצרים קמפיינים שמדברים לאנשים אמיתיים ומביאים תוצאות.</p>
-            <p data-i18n="about_p2">כאן תמצאו שירותים מותאמים: אסטרטגיה דיגיטלית, תוכן ו-SEO, ניהול רשתות ופרסום ממומן — הכל עם הליווי האישי שלי.</p>
+      <div class="container hero-inner">
+        <div class="hero-wrap">
+          <div>
+            <p class="hero-tag" data-i18n="hero_tag">עם כלי AI ושימוש בטכנולוגיה חכמה</p>
+            <h1 class="hero-title" data-i18n="hero_title">עסק קטן? בוא נעוף יחד!</h1>
+            <p class="hero-desc" data-i18n="hero_desc">עם כלים חדשניים בשילוב בינה מלאכותית (AI) – אני אעזור לך למשוך לקוחות, להגדיל מכירות ולהרים את העסק שלך לגבהים חדשים.</p>
+            <div class="hero-cta">
+              <a href="#services" class="btn btn-primary" data-i18n="hero_cta">הפתרונות שלי</a>
+              <a href="#about" class="btn btn-outline" data-i18n="hero_cta2">נעים מאוד!</a>
+            </div>
           </div>
-          <div class="about-visual">
-            <div class="about-card">
-              <span class="about-stat" data-i18n="about_stat">ניסיון + גישה</span>
-              <p data-i18n="about_stat_desc">טכנולוגיה עם מגע אישי</p>
+          <div class="hero-ai" aria-hidden="true">
+            <div class="hero-ai-badge">
+              <img src="images/alexa-robot.png" alt="LexaGrow" class="hero-ai-img">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 3. Services / שירותים -->
-    <section id="services" class="section services">
+    <section id="about" class="section about">
       <div class="container">
-        <h2 class="section-title" data-i18n="services_title">שירותים</h2>
-        <p class="section-subtitle" data-i18n="services_subtitle">מה אני מציעה</p>
-        <div class="services-grid">
-          <article class="service-card">
-            <div class="service-icon">📊</div>
-            <h3 data-i18n="service1_title">אסטרטגיה דיגיטלית</h3>
-            <p data-i18n="service1_desc">בניית תכנית שיווקית מותאמת, יעדים ומדידות להצלחה באונליין.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">✍️</div>
-            <h3 data-i18n="service2_title">תוכן ו-SEO</h3>
-            <p data-i18n="service2_desc">כתיבת תוכן איכותי, אופטימיזציה למנועי חיפוש ובלוג לבניית סמכות.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">📱</div>
-            <h3 data-i18n="service3_title">רשתות חברתיות</h3>
-            <p data-i18n="service3_desc">ניהול פייסבוק, אינסטגרם ולינקדאין — פוסטים, סיפורים וקמפיינים.</p>
-          </article>
-          <article class="service-card">
-            <div class="service-icon">🎯</div>
-            <h3 data-i18n="service4_title">פרסום ממומן</h3>
-            <p data-i18n="service4_desc">קמפיינים ממוקדים (Meta, Google) עם תקציב חכם ומדידות ברורות.</p>
-          </article>
+        <h2 class="section-title" data-i18n="about_title">נעים מאוד!</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="about-lead" data-i18n="about_lead">היי, כאן אלכסנדרה (והרובוט שלי, נעים להכיר!) 🤖✨</p>
+            <p data-i18n="about_p1">אז איך הגענו לפה? הכל התחיל לפני 6 שנים. בזמן שכולם מסביב עוד ניסו להבין איך מחברים את הבלוטות', אני כבר התאהבתי בטכנולוגיה. מאז עברתי מסע של למידה, התפתחות וכמה לילות לבנים מול מסכים, עד שהחלטתי להביא את כל הידע הזה למגרש המשחקים של השיווק הדיגיטלי.</p>
+            <p data-i18n="about_p2">קצת על ה"מאחורי הקלעים" שלי:</p>
+            <p data-i18n="about_p3">🧒 הבוס האמיתי: אני אמא של אנדי (9), מה שאומר שאני מומחית בניהול משא ומתן תחת לחץ ובפתרון תקלות טכניות תוך כדי תנועה.</p>
+            <p data-i18n="about_p4">🐾 קצינת ביטחון: אני אמא של לונה, הכלבה הכי מתוקה בעולם. אם אנחנו בשיחה ויש נביחה ברקע – הכל בשליטה, היא פשוט מוודאת שהתוצאות עבור העסק שלך יצאו "וואו".</p>
+            <p data-i18n="about_p5">🌍 נוודת בנשמה: אוהבת לטייל בעולם ולחזור עם רעיונות יצירתיים ורעננים.</p>
+            <p data-i18n="about_p6">💻 טכנולוגיה זה ה-DNA שלי: אני מביאה איתי רקע טכנולוגי עשיר, כדי לקחת ממך את כל כאב הראש של ה"איך זה עובד" ולהשאיר רק את התוצאה הסופית: עסק שעובד וצומח.</p>
+            <p data-i18n="about_p7">אני רוצה שנגדל יחד.</p>
+            <p data-i18n="about_p8">אני לא מחפשת עוד "לקוח" לרשימה. אני מחפשת שותפות לדרך.</p>
+            <p data-i18n="about_p9">יש לך עסק קטן עם חלום גדול? מעולה, בואו נצמח. אני כאן כדי לוודא שהעסק שלך לא רק נשאר רלוונטי, אלא מוביל בעזרת הכלים הכי מתקדמים שיש ל-AI ולדיגיטל להציע.</p>
+            <p data-i18n="about_p10">אני מאמינה ביחס אישי בגובה העיניים ובתוצאות שרואים בשטח.</p>
+            <p data-i18n="about_p11">אפשר כבר להתחיל? מבטיחה שיהיה מקצועי.</p>
+          </div>
+          <div class="about-visual">
+            <img src="images/about-alexandra.png" alt="אלכסנדרה – משרד ביתי עם אנדי, לונה והרובוט" class="about-img">
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 4. Blog / בלוג -->
-    <section id="blog" class="section blog">
+    <section id="services" class="section services">
       <div class="container">
-        <h2 class="section-title" data-i18n="blog_title">בלוג</h2>
-        <p class="section-subtitle" data-i18n="blog_subtitle">טיפים, תובנות ו-SEO</p>
-        <div class="blog-grid">
-          <article class="blog-card">
-            <div class="blog-date" data-i18n="blog1_date">פברואר 2025</div>
-            <h3><a href="#" data-i18n="blog1_title">איך להתחיל עם SEO בעברית</a></h3>
-            <p data-i18n="blog1_excerpt">צעדים ראשונים לאופטימיזציה למנועי חיפוש — מילות מפתח, מטא ותוכן.</p>
+        <h2 class="section-title" data-i18n="services_title">אז איך נהפוך את העסק שלך למגנט לקוחות?</h2>
+        <div class="services-grid">
+          <article class="service-card service-card--transparent">
+            <h3 data-i18n="service1_title">LexaLaunch</h3>
+            <p><strong data-i18n="service1_lead">בניית דפי נחיתה מותאמים לצרכים שלך:</strong> <span data-i18n="service1_desc">אני רותמת את הכלים המתקדמים ביותר (כולל פתרונות AI חכמים) כדי שהעמוד שלך לא רק ייראה טוב, אלא גם יעבוד מהר, יהיה מותאם לנייד וימיר גולשים ללקוחות.</span></p>
           </article>
-          <article class="blog-card">
-            <div class="blog-date" data-i18n="blog2_date">ינואר 2025</div>
-            <h3><a href="#" data-i18n="blog2_title">AI בתוכן שיווקי — איך לשמור על קול אנושי</a></h3>
-            <p data-i18n="blog2_excerpt">שימוש בכלים חכמים בלי לאבד את המגע האישי עם הקהל.</p>
+          <article class="service-card service-card--transparent">
+            <h3 data-i18n="service2_title">LexaSocial</h3>
+            <p><strong data-i18n="service2_lead_bold">עיצוב פוסטים וחומרים שיווקיים ברשתות החברתיות</strong><span class="service-card-lead" data-i18n="service2_lead_rest"> המותאמים לצרכים שלך בעזרת טכנולוגיות חכמות ומתקדמות.</span> <span data-i18n="service2_desc">אני משלבת קריאייטיב אנושי עם הכלים הכי חזקים בשוק כדי לייצר לעסק שלך נוכחות בולטת.</span></p>
           </article>
-          <article class="blog-card">
-            <div class="blog-date" data-i18n="blog3_date">דצמבר 2024</div>
-            <h3><a href="#" data-i18n="blog3_title">מדדים שחשוב לעקוב אחריהם בדיגיטל</a></h3>
-            <p data-i18n="blog3_excerpt">ROI, המרות, מעורבות — מה למדוד ולמה.</p>
+          <article class="service-card service-card--transparent">
+            <h3 data-i18n="service3_title">LexaAds</h3>
+            <p><strong data-i18n="service3_lead">להגיע בדיוק למי שצריך אותך.</strong> <span data-i18n="service3_desc">ניהול קמפיינים ופרסום ממומן בדיגיטל בעזרת טכנולוגיות טרגוט חכמות. אני בונה ומנהלת קמפיינים ממומנים ב-Google, Facebook ו-Instagram, תוך שימוש בכלי אופטימיזציה מתקדמים בכדי להתאים את הלקוחות שלך אלייך.</span></p>
           </article>
-        </div>
+                  </div>
       </div>
     </section>
+
   </main>
+
+  <section class="whatsapp-cta" aria-label="צור קשר">
+    <div class="container">
+      <div class="cta-buttons">
+        <a href="mailto:alexavi125@gmail.com" class="email-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg>
+          <span data-i18n="email_btn">אולי במייל?</span>
+        </a>
+        <a href="https://wa.me/972523633306" target="_blank" rel="noopener noreferrer" class="whatsapp-btn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span data-i18n="whatsapp_btn">שנתחבר?</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <footer class="footer">
     <div class="container">
-      <p class="footer-text" data-i18n="footer">© כל הזכויות שמורות. נבנה עם טכנולוגיה ובעבודה ידנית.</p>
-      <p><a href="mailto:your@email.com" class="footer-link">your@email.com</a></p>
+      <p class="footer-text" data-i18n="footer">© כל הזכויות שמורות. נבנה בטכנולוגיה הכי מתקדמת</p>
     </div>
   </footer>
 
   <script>
 (function(){
-var translations={he:{logo:'המותג שלי',nav_home:'דף בית',nav_about:'אודות',nav_services:'שירותים',nav_blog:'בלוג',hero_tag:'שיווק דיגיטלי עם נשמה',hero_title:'מגדילים נוכחות. בונים קשרים. מובילים תוצאות.',hero_desc:'אני עוזרת לעסקים ולמותגים להצליח באונליין — מאסטרטגיה ועד תוכן, SEO וקמפיינים.',hero_cta:'ראה שירותים',hero_cta2:'הסיפור שלי',about_title:'אודות',about_subtitle:'הסיפור שלי בעולם הדיגיטל',about_lead:'התחלתי את הדרך בעולם הטכנולוגיה והתוכן, ומשם התפתחתי לשיווק דיגיטלי ואסטרטגיה.',about_p1:'אני מאמינה בשילוב בין כלים חכמים (כולל AI) לבין גישה אנושית — כך נוצרים קמפיינים שמדברים לאנשים אמיתיים ומביאים תוצאות.',about_p2:'כאן תמצאו שירותים מותאמים: אסטרטגיה דיגיטלית, תוכן ו-SEO, ניהול רשתות ופרסום ממומן — הכל עם הליווי האישי שלי.',about_stat:'ניסיון + גישה',about_stat_desc:'טכנולוגיה עם מגע אישי',services_title:'שירותים',services_subtitle:'מה אני מציעה',service1_title:'אסטרטגיה דיגיטלית',service1_desc:'בניית תכנית שיווקית מותאמת, יעדים ומדידות להצלחה באונליין.',service2_title:'תוכן ו-SEO',service2_desc:'כתיבת תוכן איכותי, אופטימיזציה למנועי חיפוש ובלוג לבניית סמכות.',service3_title:'רשתות חברתיות',service3_desc:'ניהול פייסבוק, אינסטגרם ולינקדאין — פוסטים, סיפורים וקמפיינים.',service4_title:'פרסום ממומן',service4_desc:'קמפיינים ממוקדים (Meta, Google) עם תקציב חכם ומדידות ברורות.',blog_title:'בלוג',blog_subtitle:'טיפים, תובנות ו-SEO',blog1_date:'פברואר 2025',blog1_title:'איך להתחיל עם SEO בעברית',blog1_excerpt:'צעדים ראשונים לאופטימיזציה למנועי חיפוש — מילות מפתח, מטא ותוכן.',blog2_date:'ינואר 2025',blog2_title:'AI בתוכן שיווקי — איך לשמור על קול אנושי',blog2_excerpt:'שימוש בכלים חכמים בלי לאבד את המגע האישי עם הקהל.',blog3_date:'דצמבר 2024',blog3_title:'מדדים שחשוב לעקוב אחריהם בדיגיטל',blog3_excerpt:'ROI, המרות, מעורבות — מה למדוד ולמה.',footer:'© כל הזכויות שמורות. נבנה עם טכנולוגיה ובעבודה ידנית.'},en:{logo:'My Brand',nav_home:'Home',nav_about:'About',nav_services:'Services',nav_blog:'Blog',hero_tag:'Digital marketing with a human touch',hero_title:'Grow presence. Build relationships. Drive results.',hero_desc:'I help businesses and brands succeed online — from strategy to content, SEO and campaigns.',hero_cta:'See services',hero_cta2:'My story',about_title:'About',about_subtitle:'My story in the digital world',about_lead:'I started in tech and content, and evolved into digital marketing and strategy.',about_p1:"I believe in combining smart tools (including AI) with a human approach — so campaigns speak to real people and deliver results.",about_p2:"Here you'll find tailored services: digital strategy, content and SEO, social media and paid advertising — all with my personal touch.",about_stat:'Experience + approach',about_stat_desc:'Technology with a personal touch',services_title:'Services',services_subtitle:'What I offer',service1_title:'Digital strategy',service1_desc:'Custom marketing plans, goals and metrics for online success.',service2_title:'Content & SEO',service2_desc:'Quality copy, search optimization and blog content for authority.',service3_title:'Social media',service3_desc:'Facebook, Instagram and LinkedIn — posts, stories and campaigns.',service4_title:'Paid advertising',service4_desc:'Focused campaigns (Meta, Google) with smart budget and clear metrics.',blog_title:'Blog',blog_subtitle:'Tips, insights and SEO',blog1_date:'February 2025',blog1_title:'How to get started with SEO in Hebrew',blog1_excerpt:'First steps for search optimization — keywords, meta and content.',blog2_date:'January 2025',blog2_title:'AI in marketing content — keeping a human voice',blog2_excerpt:'Using smart tools without losing the personal touch with your audience.',blog3_date:'December 2024',blog3_title:'Metrics that matter in digital',blog3_excerpt:'ROI, conversions, engagement — what to measure and why.',footer:'© All rights reserved. Built with technology and a personal touch.'}};
+var translations={he:{logo:'',nav_home:'דף בית',nav_about:'קצת עלי',nav_services:'הפתרונות',nav_blog:'בלוג',hero_tag:'עם כלי AI ושימוש בטכנולוגיה חכמה',hero_title:'עסק קטן? בוא נעוף יחד!',hero_desc:'עם כלים חדשניים בשילוב בינה מלאכותית (AI) – אני אעזור לך למשוך לקוחות, להגדיל מכירות ולהרים את העסק שלך לגבהים חדשים.',hero_cta:'הפתרונות שלי',hero_cta2:'נעים מאוד!',ai_title:'טכנולוגיה ובינה מלאכותית בעסק שלך',ai_subtitle:'מנצלים כלים חדשניים ו-AI כדי להביא תוצאות אמיתיות לעסק',ai_feat1:'שיפור תהליכים',ai_feat1_desc:'בדיקת איכות מתקדמת ופתרונות מותאמים',ai_feat2:'שיפור טכנולוגיה',ai_feat2_desc:'אינטגרציה של כלים חכמים ו-AI בעסק',ai_feat3:'בדיקת איכות מדויקת',ai_feat3_desc:'בדיקות איכות יסודיות ומותאמות',about_title:'נעים מאוד!',about_subtitle:'קצת עלי',about_lead:'היי, כאן אלכסנדרה (והרובוט שלי, נעים להכיר!) 🤖✨',about_p1:'אז איך הגענו לפה? הכל התחיל לפני 6 שנים. בזמן שכולם מסביב עוד ניסו להבין איך מחברים את הבלוטות\', אני כבר התאהבתי בטכנולוגיה. מאז עברתי מסע של למידה, התפתחות וכמה לילות לבנים מול מסכים, עד שהחלטתי להביא את כל הידע הזה למגרש המשחקים של השיווק הדיגיטלי.',about_p2:'קצת על ה"מאחורי הקלעים" שלי:',about_p3:'🧒 הבוס האמיתי: אני אמא של אנדי (9), מה שאומר שאני מומחית בניהול משא ומתן תחת לחץ ובפתרון תקלות טכניות תוך כדי תנועה.',about_p4:'🐾 קצינת ביטחון: אני אמא של לונה, הכלבה הכי מתוקה בעולם. אם אנחנו בשיחה ויש נביחה ברקע – הכל בשליטה, היא פשוט מוודאת שהתוצאות עבור העסק שלך יצאו "וואו".',about_p5:'🌍 נוודת בנשמה: אוהבת לטייל בעולם ולחזור עם רעיונות יצירתיים ורעננים.',about_p6:'💻 טכנולוגיה זה ה-DNA שלי: אני מביאה איתי רקע טכנולוגי עשיר, כדי לקחת ממך את כל כאב הראש של ה"איך זה עובד" ולהשאיר רק את התוצאה הסופית: עסק שעובד וצומח.',about_p7:'אני רוצה שנגדל יחד.',about_p8:'אני לא מחפשת עוד "לקוח" לרשימה. אני מחפשת שותפות לדרך.',about_p9:'יש לך עסק קטן עם חלום גדול? מעולה, בואו נצמח. אני כאן כדי לוודא שהעסק שלך לא רק נשאר רלוונטי, אלא מוביל בעזרת הכלים הכי מתקדמים שיש ל-AI ולדיגיטל להציע.',about_p10:'אני מאמינה ביחס אישי בגובה העיניים ובתוצאות שרואים בשטח.',about_p11:'אפשר כבר להתחיל? מבטיחה שיהיה מקצועי.',about_stat:'שותפות לדרך',about_stat_desc:'יחס אישי • תוצאות בשטח',services_title:'אז איך נהפוך את העסק שלך למגנט לקוחות?',services_subtitle:'',service1_title:'LexaLaunch',service1_lead:'בניית דפי נחיתה מותאמים לצרכים שלך:',service1_desc:'אני רותמת את הכלים המתקדמים ביותר (כולל פתרונות AI חכמים) כדי שהעמוד שלך לא רק ייראה טוב, אלא גם יעבוד מהר, יהיה מותאם לנייד וימיר גולשים ללקוחות.',service2_title:'LexaSocial',service2_lead_bold:'עיצוב פוסטים וחומרים שיווקיים ברשתות החברתיות',service2_lead_rest:' המותאמים לצרכים שלך בעזרת טכנולוגיות חכמות ומתקדמות.',service2_desc:'אני משלבת קריאייטיב אנושי עם הכלים הכי חזקים בשוק כדי לייצר לעסק שלך נוכחות בולטת.',service3_title:'LexaAds',service3_lead:'להגיע בדיוק למי שצריך אותך.',service3_desc:'ניהול קמפיינים ופרסום ממומן בדיגיטל בעזרת טכנולוגיות טרגוט חכמות. אני בונה ומנהלת קמפיינים ממומנים ב-Google, Facebook ו-Instagram, תוך שימוש בכלי אופטימיזציה מתקדמים בכדי להתאים את הלקוחות שלך אלייך.',service4_title:'פרסום ממומן',service4_desc:'קמפיינים ממוקדים (Meta, Google) עם תקציב חכם ומדידות ברורות.',blog_title:'בלוג',blog_subtitle:'טיפים, תובנות ו-SEO',blog1_date:'פברואר 2025',blog1_title:'איך להתחיל עם SEO בעברית',blog1_excerpt:'צעדים ראשונים לאופטימיזציה למנועי חיפוש — מילות מפתח, מטא ותוכן.',blog2_date:'ינואר 2025',blog2_title:'AI בתוכן שיווקי — איך לשמור על קול אנושי',blog2_excerpt:'שימוש בכלים חכמים בלי לאבד את המגע האישי עם הקהל.',blog3_date:'דצמבר 2024',blog3_title:'מדדים שחשוב לעקוב אחריהם בדיגיטל',blog3_excerpt:'ROI, המרות, מעורבות — מה למדוד ולמה.',footer:'© כל הזכויות שמורות. נבנה בטכנולוגיה הכי מתקדמת',whatsapp_btn:'שנתחבר?',email_btn:'אולי במייל?'},en:{logo:'',nav_home:'Home',nav_about:'A bit about me',nav_services:'The solutions',nav_blog:'Blog',hero_tag:'With AI tools and smart technology',hero_title:'Small business? Let\'s fly together!',hero_desc:'With innovative tools and artificial intelligence (AI) – I\'ll help you attract customers, increase sales and take your business to new heights.',hero_cta:'My solutions',hero_cta2:'Nice to meet you!',ai_title:'Technology and AI in your business',ai_subtitle:'Using innovative tools and AI to deliver real results for your business',ai_feat1:'Process improvement',ai_feat1_desc:'Advanced quality assurance and tailored solutions',ai_feat2:'Technology improvement',ai_feat2_desc:'Integrating smart tools and AI into your business',ai_feat3:'Precise quality assurance',ai_feat3_desc:'Thorough, tailored quality checks',about_title:'Nice to meet you!',about_subtitle:'A bit about me',about_lead:'Hi, I\'m Alexandra (and my robot – nice to meet you!) 🤖✨',about_p1:'So how did we get here? It all started 6 years ago. While everyone else was still figuring out how to connect Bluetooth, I was already in love with technology. Since then I\'ve been on a journey of learning, growth and quite a few late nights in front of screens – until I decided to bring all that knowledge to the playing field of digital marketing.',about_p2:'A bit about my "behind the scenes":',about_p3:'🧒 The real boss: I\'m mom to Andy (9), which means I\'m an expert at negotiating under pressure and fixing tech glitches on the go.',about_p4:'🐾 Security officer: I\'m mom to Luna, the sweetest dog in the world. If we\'re on a call and you hear barking – it\'s under control, she just makes sure the results for your business come out "wow".',about_p5:'🌍 Wanderlust at heart: I love traveling the world and coming back with fresh, creative ideas.',about_p6:'💻 Technology is in my DNA: I bring a strong tech background so I can take the "how does it work" headache off your plate and leave you with the end result: a business that works and grows.',about_p7:'I want us to grow together.',about_p8:'I\'m not looking for another "client" on a list. I\'m looking for a partnership for the journey.',about_p9:'Got a small business with a big dream? Great, let\'s grow. I\'m here to make sure your business doesn\'t just stay relevant – it leads, with the most advanced tools AI and digital have to offer.',about_p10:'I believe in a personal, eye-level relationship and in results you can see on the ground.',about_p11:'Ready to get started? I promise it\'ll be professional.',about_stat:'Partnership for the journey',about_stat_desc:'Personal touch • Results on the ground',services_title:'So how do we turn your business into a customer magnet?',services_subtitle:'',service1_title:'LexaLaunch',service1_lead:'Landing pages built for your needs:',service1_desc:'I harness the most advanced tools (including smart AI solutions) so your page not only looks good, but also loads fast, is mobile-friendly and converts visitors into customers.',service2_title:'LexaSocial',service2_lead_bold:'Design of posts and marketing materials for social networks',service2_lead_rest:' tailored to your needs with smart, advanced tech.',service2_desc:'I combine human creativity with the most powerful tools on the market to build a standout presence for your business.',service3_title:'LexaAds',service3_lead:'Reach exactly who needs you.',service3_desc:'Managing campaigns and paid digital advertising with smart targeting. I build and run paid campaigns on Google, Facebook and Instagram, using advanced optimization tools to bring your ideal customers to you.',service4_title:'Paid advertising',service4_desc:'Focused campaigns (Meta, Google) with smart budget and clear metrics.',blog_title:'Blog',blog_subtitle:'Tips, insights and SEO',blog1_date:'February 2025',blog1_title:'How to get started with SEO in Hebrew',blog1_excerpt:'First steps for search optimization — keywords, meta and content.',blog2_date:'January 2025',blog2_title:'AI in marketing content — keeping a human voice',blog2_excerpt:'Using smart tools without losing the personal touch with your audience.',blog3_date:'December 2024',blog3_title:'Metrics that matter in digital',blog3_excerpt:'ROI, conversions, engagement — what to measure and why.',footer:'© All rights reserved. Built with the most advanced technology',whatsapp_btn:'Shall we connect?',email_btn:'Maybe by email?'}};
 var currentLang='he';
 function applyLanguage(lang){currentLang=lang;var t=translations[lang];document.querySelectorAll('[data-i18n]').forEach(function(el){var key=el.getAttribute('data-i18n');if(t[key])el.textContent=t[key];});document.documentElement.lang=lang==='he'?'he':'en';document.documentElement.dir=lang==='he'?'rtl':'ltr';document.body.classList.toggle('lang-en',lang==='en');var langSwitch=document.getElementById('langSwitch');if(langSwitch)langSwitch.textContent=lang==='he'?'EN':'עב';localStorage.setItem('site-lang',lang);}
 function initLangSwitch(){var saved=localStorage.getItem('site-lang');if(saved&&(saved==='he'||saved==='en'))applyLanguage(saved);var btn=document.getElementById('langSwitch');if(btn)btn.addEventListener('click',function(){applyLanguage(currentLang==='he'?'en':'he');});}
